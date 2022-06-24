@@ -1,10 +1,9 @@
-const { Model, DataTypes } = require ('sequelize')
 
-const sequelize = require('../config/connection');
 
-class SubCategory extends Model {}
+// const { Model, DataTypes } = require("sequelize");
 
-SubCategory.init(
-    {
+// const sequelize = require("../config/connection");
 
-})
+// class SubCategory extends Model {}
+
+// SubCategory.init({});
