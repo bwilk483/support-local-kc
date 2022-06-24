@@ -1,12 +1,11 @@
-const router = require("express").router();
+const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { User } = require("../models");
 
-// Import Middleware
+//Import Middleware
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
-  console.log("home route called");
   try {
     const categoryData = await Category.findAll({
       include: [
