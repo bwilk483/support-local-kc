@@ -6,13 +6,13 @@ class Category extends Model {}
 
 Category.init(
     {
-        id: {
+        businessName: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
         title: 'Business Type',
+        type: 'Resturant Type',
         allowNull: false,
-
     });
