@@ -34,4 +34,8 @@
 //   }
 // );
 
+<<<<<<< HEAD
 // module.exports = Review;
+=======
+// module.exports = Review;
+>>>>>>> origin/develop

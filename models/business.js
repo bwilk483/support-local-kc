@@ -35,4 +35,8 @@
 //   },
 // });
 
+<<<<<<< HEAD
 // module.exports = Business;
+=======
+// module.exports = Business;
+>>>>>>> origin/develop

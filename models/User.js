@@ -51,4 +51,8 @@
 //   }
 // );
 
+<<<<<<< HEAD
 // module.exports = User;
+=======
+// module.exports = User;
+>>>>>>> origin/develop

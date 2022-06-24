@@ -15,4 +15,8 @@
 //   allowNull: false,
 // });
 
+<<<<<<< HEAD
 // module.exports = Category;
+=======
+// module.exports = Category;
+>>>>>>> origin/develop

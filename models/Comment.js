@@ -41,4 +41,8 @@
 //   }
 // );
 
+<<<<<<< HEAD
 // module.exports = Comment;
+=======
+// module.exports = Comment;
+>>>>>>> origin/develop

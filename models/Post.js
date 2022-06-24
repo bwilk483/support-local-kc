@@ -81,4 +81,8 @@
 //   }
 // );
 
+<<<<<<< HEAD
 // module.exports = Post;
+=======
+// module.exports = Post;
+>>>>>>> origin/develop
