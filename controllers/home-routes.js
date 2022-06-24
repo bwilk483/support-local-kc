@@ -7,34 +7,47 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    const categoryData = await Category.findAll({
-      include: [
-        {
-          model: Category,
-          attributes: ["name", "description"],
-        },
-      ],
-    });
-    const displayCategory = categoryData.map((category) =>
-      category.get({ plain: true })
-    );
-    res.render("homepage", {
-      displayCategory,
-      loggedIn: req.session.loggedIn,
-    });
+    res.render("dashboard");
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.get("/login", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
+router.get("/login", async (req, res) => {
+  try {
+    res.render("login");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
+});
 
-  res.render("login");
+router.get("/signup", async (req, res) => {
+  try {
+    res.render("signup");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/dashboard/create", async (req, res) => {
+  try {
+    res.render("addBusiness");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/dashboard/", async (req, res) => {
+  try {
+    res.render("dashboard");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

@@ -27,6 +27,6 @@ const reviewData = [
   },
 ];
 
-const seedReview = () => Category.bulkCreate(reviewData);
+const seedReview = () => Review.bulkCreate(reviewData);
 
 module.exports = seedReview;
