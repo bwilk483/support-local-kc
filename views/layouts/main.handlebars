@@ -31,6 +31,7 @@
               href="/dashboard/create/"
               class="navbar-item is-hoverable pt-1"
             >Add a location!</a>
+            <p>Welcome {{user.username}} </p>
             <button id="logout" class="button is-info">logout</button>
 
           {{else}}
@@ -60,7 +61,7 @@
       </footer>
     </div>
     {{#if loggedIn}}
-      <script src="/javascript/logout.js"></script>
+      <script src="/public/javascript/logout.js"></script>
     {{/if}}
   </body>
 </html>
