@@ -6,20 +6,27 @@ class Category extends Model {}
 
 Category.init(
   {
-    id: {
+
+    businessName: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+    }
+
     },
-  },
+  
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "category",
-  }
-);
+    title: "Business Type",
+    type: "Resturant Type",
+    allowNull: false,
+  },
+
+    );
 
 module.exports = Category;
