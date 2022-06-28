@@ -12,6 +12,18 @@ SubCategory.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    subcategory_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    category_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "category",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
