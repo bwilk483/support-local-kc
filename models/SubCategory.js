@@ -6,5 +6,32 @@ class SubCategory extends Model {}
 
 SubCategory.init(
     {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+          },
+          subcategory_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+          },
+          category_id: {
+            type: DataTypes.INTEGER,
+            references: {
+              model: 'category',
+              key: 'id'
+            }
+          }
+    },
+    {
+      sequelize,
+      timestamps: false,
+      freezeTableName: true,
+      underscored: true,
+      modelName: 'subcategory',
+    });
+  
 
-})
+    module.exports= SubCategory;

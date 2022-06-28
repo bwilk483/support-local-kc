@@ -5,13 +5,27 @@ const sequelize = require('../config/connection');
 class Category extends Model {}
 
 Category.init(
-    {
-        businessName: {
-            type: DataTypes.INTEGER,
+    {   
+        id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+      },
+        category_name: {
+            type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: false,
+            unique: true
         },
-        title: 'Business Type',
-        allowNull: false,
-    });
+    },
+    {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'category',
+  });
+
+module.exports= Category;

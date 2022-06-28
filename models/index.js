@@ -70,11 +70,12 @@ Post.hasMany(Comment, {
   });
 
 Category.hasMany(SubCategory, {
-    foreignKey: ''
+    foreignKey: 'category_id'
+    //onDelete: cascade
   });
 
-Subcategory.belongsTo(Category,{
-    foreignKey: ''
+SubCategory.belongsTo(Category,{
+    foreignKey: 'category_id'
 }); 
 
 
