@@ -3,7 +3,7 @@ const { User, Review } = require("../../models");
 
 // get all Reviews """"""needs updated
 router.get("/", (req, res) => {
-  User.findAll({})
+  Review.findAll({})
     .then((dbReviewData) => res.json(dbReviewData))
     .catch((err) => {
       console.log(err);
@@ -31,23 +31,14 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// CREATE new review """"""needs Updates
 router.post("/", async (req, res) => {
   try {
     const dbReviewData = await Review.create({
-      user_id: req.body.user_id,
-      email: req.body.email,
-      password: req.body.password,
+      id: req.body.id,
+      user_Id: req.body.user_Id,
+      post_Id: req.body.post_Id,
     });
-
-    req.session.save(() => {
-      req.session.review_id = dbReviewData.id;
-      req.session.user_id = dbReviewData.userId;
-      req.session.post_id = dbReviewData.postId;
-      req.session.loggedIn = true;
-
-      res.json(dbReviewData);
-    });
+    res.json(dbReviewData);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
