@@ -1,13 +1,6 @@
 const router = require("express").Router();
-const {
-  Post,
-  User,
-  Review,
-  Comment,
-  Business,
-  Category,
-  SubCategory,
-} = require("../../models");
+const { User } = require("../../models");
+const withAuth = require("../.././utils/auth");
 
 // get all users
 router.get("/", (req, res) => {
@@ -102,14 +95,13 @@ router.post("/login", async (req, res) => {
 });
 
 // Logout
-router.post("/logout", (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
+router.post("/logout", withAuth, (req, res) => {
+  if (!req.session.loggedIn) {
     res.status(404).end();
   }
+  req.session.destroy(() => {
+    res.status(200).end();
+  });
 });
 
 router.delete("/:id", (req, res) => {

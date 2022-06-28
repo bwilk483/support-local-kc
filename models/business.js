@@ -12,7 +12,7 @@ Business.init(
       allowNull: false,
       unique: true,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: false,
     },
     phone: {
       type: DataTypes.STRING,
@@ -27,7 +27,7 @@ Business.init(
         isEmail: true,
       },
     },
-    URL: {
+    url: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -40,7 +40,7 @@ Business.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: "business_name",
   }
 );
 

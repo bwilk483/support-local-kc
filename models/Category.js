@@ -12,6 +12,11 @@ Category.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    catName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
   },
   {
     sequelize,
