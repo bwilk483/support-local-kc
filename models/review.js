@@ -23,6 +23,10 @@ Review.init(
         model: 'post',
         key: 'id'
       }
+    },
+    review: {
+      type: DataTypes.STRING,
+      allowNull: false,
     }
   },
   {
@@ -30,7 +34,7 @@ Review.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Review'
+    modelName: 'review'
   }
 );
 
