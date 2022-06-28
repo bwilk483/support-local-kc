@@ -9,7 +9,7 @@ Business.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       primaryKey: true,
       autoIncrement: true,
     },
@@ -22,9 +22,14 @@ Business.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+
     address: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
   },
   {
@@ -32,7 +37,7 @@ Business.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "business",
+    modelName: "businesses",
   }
 );
 

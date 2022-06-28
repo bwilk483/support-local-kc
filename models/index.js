@@ -69,9 +69,14 @@ Post.hasMany(Comment, {
   foreignKey: "post_id",
 });
 
-Category.hasMany(SubCategory, {});
+Category.hasMany(SubCategory, {
+  foreignKey: "category_id",
+  //onDelete: cascade
+});
 
-SubCategory.belongsTo(Category, {});
+SubCategory.belongsTo(Category, {
+  foreignKey: "category_id",
+});
 
 module.exports = {
   Post,

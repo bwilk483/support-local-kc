@@ -12,10 +12,17 @@ Category.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-    }
+    },
 
+  
+  
+    catName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
     },
   
+  },
   {
     sequelize,
     timestamps: false,
@@ -25,8 +32,9 @@ Category.init(
     title: "Business Type",
     type: "Resturant Type",
     allowNull: false,
-  },
+  }
 
-    );
+
+);
 
 module.exports = Category;
