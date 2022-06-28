@@ -33,7 +33,14 @@ Business.init(
         validate: {
           len: [4]
         }
-      }
-    });
+      },
+    },
+      {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'business',
+      });
 
     module.exports = Business;
