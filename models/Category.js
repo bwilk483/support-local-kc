@@ -1,3 +1,5 @@
+
+
 const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../config/connection");
@@ -11,6 +13,11 @@ Category.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+    },
+    catName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
     },
   },
   {

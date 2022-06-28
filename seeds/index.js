@@ -12,8 +12,4 @@ const seedAll = async () => {
   process.exit(0);
 };
 
-<<<<<<< HEAD
 seedAll();
-=======
-seedAll();
->>>>>>> origin/develop

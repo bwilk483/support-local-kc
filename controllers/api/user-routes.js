@@ -1,13 +1,6 @@
 const router = require("express").Router();
-const {
-  Post,
-  User,
-  Review,
-  Comment,
-  Business,
-  Category,
-  SubCategory,
-} = require("../../models");
+const { User } = require("../../models");
+const withAuth = require("../.././utils/auth");
 
 // get all users
 router.get("/", (req, res) => {
@@ -64,45 +57,51 @@ router.post("/", async (req, res) => {
 });
 
 // Login
-router.post('/login', (req, res) => {
-  User.findOne({
-    where: {
-      email: req.body.email
-    }
-  }).then(dbUserData => {
+router.post("/login", async (req, res) => {
+  try {
+    const dbUserData = await User.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
 
-    const validPassword = dbUserData.checkPassword(req.body.password);
+    const validPassword = await dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect password!' });
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
 
     req.session.save(() => {
-      // declare session variables
-      req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
       req.session.loggedIn = true;
 
-      res.json({ user: dbUserData, message: 'You are now logged in!' });
+      res
+        .status(200)
+        .json({ user: dbUserData, message: "You are now logged in!" });
     });
-  });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 // Logout
-router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  }
-  else {
+router.post("/logout", withAuth, (req, res) => {
+  if (!req.session.loggedIn) {
     res.status(404).end();
   }
+  req.session.destroy(() => {
+    res.status(200).end();
+  });
 });
 
 router.delete("/:id", (req, res) => {
