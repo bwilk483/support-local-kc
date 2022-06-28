@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { User, Business } = require("../models");
+const { User } = require("../models");
 
 //Import Middleware
 const withAuth = require("../utils/auth");
@@ -43,25 +43,9 @@ router.get("/dashboard/create", async (req, res) => {
   }
 });
 
-router.get("/dashboard/edit/:id", async (req, res) => {
-  try {
-    const businesses = await  Business.findOne({id:req.params.id})
-    console.log(businesses.dataValues, req.params.id)
-    res.render("edit-business", {business: businesses.dataValues});
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
 router.get("/dashboard/", async (req, res) => {
-  
-  
   try {
-    const businesses = await  Business.findAll({})
-    console.log(businesses);
-    const posts= businesses.map(business => business.dataValues)
-    res.render("dashboard",  { loggedIn: req.session.loggedIn, posts});
+    res.render("dashboard", { loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

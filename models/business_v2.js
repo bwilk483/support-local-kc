@@ -1,4 +1,3 @@
-/*
 const { Model, DataTypes } = require("sequelize");
 const { model } = require("../config/connection");
 
@@ -8,32 +7,29 @@ class Business extends Model {}
 
 Business.init(
   {
-    businessName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
       primaryKey: true,
       autoIncrement: true,
     },
-    phone: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
-    email: {
+
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
-    URL: {
+    url: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [4],
-      },
+      allowNull: true,
+    },
+
+    address: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {
@@ -41,9 +37,8 @@ Business.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: "businesses",
   }
 );
 
 module.exports = Business;
-*/

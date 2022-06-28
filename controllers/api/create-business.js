@@ -5,10 +5,10 @@ const { User, Business } = require("../../models");
 router.post("/", async (req, res) => {
   try {
     const dbBusinessData = await Business.create({
+      businessName: req.body.businessName,
+      phone: req.body.phone,
+      email: req.body.email,
       url: req.body.url,
-      description: req.body.post_about,
-      title: req.body.title,
-      address: req.body.address,
     });
     res.json(dbBusinessData);
   } catch (err) {

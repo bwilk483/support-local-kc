@@ -5,7 +5,7 @@ const reviews = require("./reviews");
 const createBusiness = require("./create-business");
 
 router.use("/users", userRoutes);
-router.use("/business", createBusiness);
+router.use("/create-business", createBusiness);
 router.use("/reviews", reviews);
 
 module.exports = router;

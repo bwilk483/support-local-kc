@@ -6,18 +6,23 @@ class Post extends Model {
   static upvote(body, models) {
     return models.Post.create({
       user_id: body.user_id,
-      post_id: body.post_id
+      post_id: body.post_id,
     }).then(() => {
       return Post.findOne({
         where: {
-          id: body.post_id
+          id: body.post_id,
         },
         attributes: [
-          'id',
-          'post_url',
-          'title',
-          'created_at',
-          [sequelize.literal('(SELECT COUNT(*) FROM review WHERE post.id = review.post_id)'), 'review_count']
+          "id",
+          "post_url",
+          "title",
+          "created_at",
+          [
+            sequelize.literal(
+              "(SELECT COUNT(*) FROM review WHERE post.id = review.post_id)"
+            ),
+            "review_count",
+          ],
         ],
         include: [
           {
@@ -47,11 +52,11 @@ Post.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     post_url: {
       type: DataTypes.STRING,
