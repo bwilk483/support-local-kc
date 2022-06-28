@@ -67,4 +67,8 @@ router.delete("/:businessName", (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> origin/develop
