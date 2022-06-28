@@ -70,11 +70,11 @@ Post.hasMany(Comment, {
   });
 
 Category.hasMany(SubCategory, {
-
+    foreignKey: ''
   });
 
 Subcategory.belongsTo(Category,{
-
+    foreignKey: ''
 }); 
 
 

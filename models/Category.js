@@ -13,6 +13,5 @@ Category.init(
             autoIncrement: true
         },
         title: 'Business Type',
-        type: 'Resturant Type',
         allowNull: false,
     });
