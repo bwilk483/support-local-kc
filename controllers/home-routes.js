@@ -43,6 +43,41 @@ router.get("/dashboard/create", async (req, res) => {
   }
 });
 
+router.get("/categories", async (req, res) => {
+  try {
+    res.render("categories");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+router.get("/retail", async (req, res) => {
+  try {
+    res.render("retail");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/restaurant", async (req, res) => {
+  try {
+    res.render("restaurant");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/entertainment", async (req, res) => {
+  try {
+    res.render("entertainment");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.get("/dashboard/", async (req, res) => {
   try {
     res.render("dashboard", { loggedIn: req.session.loggedIn });
