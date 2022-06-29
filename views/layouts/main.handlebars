@@ -31,11 +31,11 @@
               href="/dashboard/create/"
               class="navbar-item is-hoverable pt-1"
             >Add a location!</a>
-            <p>Welcome {{user.username}}</p>
             <button id="logout" class="button is-info">logout</button>
 
           {{else}}
             <a href="/" class="navbar-item is-hoverable pt-1">Homepage</a>
+            <a href="/categories/" class="navbar-item is-hoverable pt-1">View our categories!</a>
             <a href="/login" class="button is-info">login</a>
           {{/if}}
         </nav>
@@ -55,6 +55,7 @@
               <a href="/dashboard/create/">Add a location!</a>
             {{else}}
               <a href="/login/">login</a>
+              
             {{/if}}
           </p>
         </div>

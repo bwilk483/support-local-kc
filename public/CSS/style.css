@@ -162,3 +162,17 @@ footer {
     display:flex;
     flex-direction: column;
 }
+
+.row {
+  display:flex;
+  text-align: center;
+  height:100;
+  justify-content: center;
+}
+img {
+  width: 150px;
+  height: 150px;
+  vertical-align: top;
+  justify-content: center;
+  zoom: 1
+}

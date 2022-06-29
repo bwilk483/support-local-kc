@@ -1,9 +1,9 @@
-// const { Model, DataTypes } = require("sequelize");
-// const { model } = require("../config/connection");
+const { Model, DataTypes } = require("sequelize");
+const { model } = require("../config/connection");
 
-// const sequelize = require("../config/connection");
+const sequelize = require("../config/connection");
 
-// class Business extends Model {}
+class Business extends Model {}
 
 Business.init(
   {
@@ -44,4 +44,4 @@ Business.init(
   }
 );
 
-// module.exports = Business;
+module.exports = Business;
