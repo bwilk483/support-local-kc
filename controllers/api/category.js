@@ -2,22 +2,22 @@ const router = require("express").Router();
 const { Category, SubCategory, Business } = require("../../models");
 
 router.get("/", (req, res) => {
-  SubCategory.findAll({
-    include: [{ model: Business }],
+  Category.findAll({
+    include: [{ model: SubCategory }],
   })
-    .then((subcategoryData) => {
-      res.status(200).json(subcategoryData);
+    .then((categoryData) => {
+      res.status(200).json(categoryData);
     })
     .catch((error) => res.status(404).json(error));
 });
 
 router.get("/:id", (req, res) => {
-  SubCategory.findOne({
-    include: [{ model: Business }],
+  Category.findOne({
+    include: [{ model: SubCategory }],
     where: { id: req.params.id },
   })
-    .then((subcategoryData) => {
-      res.status(200).json(subcategoryData);
+    .then((categoryData) => {
+      res.status(200).json(categoryData);
     })
     .catch((error) => res.status(404).json(error));
 });
@@ -25,11 +25,10 @@ router.get("/:id", (req, res) => {
 // CREATE new Category
 router.post("/", async (req, res) => {
   try {
-    const subcategoryData = await SubCategory.create({
-      subcategory_name: req.body.subcategory_name,
-      category_id: req.body.category_id,
+    const categoryData = await Category.create({
+      category_name: req.body.category_name,
     });
-    res.json(subcategoryData);
+    res.json(categoryData);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -37,18 +36,18 @@ router.post("/", async (req, res) => {
 });
 
 // delete business by business name
-router.delete("/:subcategory_name", (req, res) => {
-  SubCategory.destroy({
+router.delete("/:category_name", (req, res) => {
+  Category.destroy({
     where: {
-      subcategory_name: req.params.subcategory_name,
+      category_name: req.params.category_name,
     },
   })
-    .then((subcategoryData) => {
-      if (!subcategoryData) {
+    .then((categoryData) => {
+      if (!categoryData) {
         res.status(404).json({ message: "No user found with this id" });
         return;
       }
-      res.json(subcategoryData);
+      res.json(categoryData);
     })
     .catch((err) => {
       console.log(err);
