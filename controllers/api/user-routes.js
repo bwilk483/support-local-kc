@@ -1,4 +1,5 @@
 const router = require("express").Router();
+<<<<<<< HEAD
 const {
   Post,
   User,
@@ -8,6 +9,10 @@ const {
   Category,
   SubCategory,
 } = require("../../models");
+=======
+const { User } = require("../../models");
+const withAuth = require("../.././utils/auth");
+>>>>>>> d6ca28f4fe2f84fbc5c1109cf217bcf46eeba825
 
 // get all users
 router.get("/", (req, res) => {
@@ -102,14 +107,13 @@ router.post("/login", async (req, res) => {
 });
 
 // Logout
-router.post("/logout", (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
+router.post("/logout", withAuth, (req, res) => {
+  if (!req.session.loggedIn) {
     res.status(404).end();
   }
+  req.session.destroy(() => {
+    res.status(200).end();
+  });
 });
 
 router.delete("/:id", (req, res) => {
@@ -131,4 +135,27 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+<<<<<<< HEAD
+router.delete("/:id", (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> d6ca28f4fe2f84fbc5c1109cf217bcf46eeba825

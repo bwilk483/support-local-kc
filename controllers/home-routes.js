@@ -43,15 +43,33 @@ router.get("/dashboard/create", async (req, res) => {
   }
 });
 
-router.get("/dashboard/", async (req, res) => {
+router.get("/categories", async (req, res) => {
   try {
-    res.render("dashboard");
+    res.render("categories");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+router.get("/retail", async (req, res) => {
+  try {
+    res.render("retail");
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
+router.get("/restaurant", async (req, res) => {
+  try {
+    res.render("restaurant");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+<<<<<<< HEAD
 router.post("/login", async (req, res) => {
   try {
     const dbUserData = await User.findOne({
@@ -83,10 +101,26 @@ router.post("/login", async (req, res) => {
         .status(200)
         .json({ user: dbUserData, message: "You are now logged in!" });
     });
+=======
+router.get("/entertainment", async (req, res) => {
+  try {
+    res.render("entertainment");
+>>>>>>> d6ca28f4fe2f84fbc5c1109cf217bcf46eeba825
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
+<<<<<<< HEAD
+=======
+router.get("/dashboard/", async (req, res) => {
+  try {
+    res.render("dashboard", { loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+>>>>>>> d6ca28f4fe2f84fbc5c1109cf217bcf46eeba825
 module.exports = router;

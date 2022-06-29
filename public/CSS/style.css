@@ -161,4 +161,21 @@ footer {
 .rows{
     display:flex;
     flex-direction: column;
+<<<<<<< HEAD
+=======
+}
+
+.row {
+  display:flex;
+  text-align: center;
+  height:100;
+  justify-content: center;
+}
+img {
+  width: 150px;
+  height: 150px;
+  vertical-align: top;
+  justify-content: center;
+  zoom: 1
+>>>>>>> d6ca28f4fe2f84fbc5c1109cf217bcf46eeba825
 }
