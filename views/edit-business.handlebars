@@ -1,0 +1,41 @@
+<section>
+  <a href="/dashboard" class="is-pulled-right">&larr; Back to dash</a>
+  <h2 class="title">Edit Your Business!</h2><hr />
+
+  <form class="edit-business-form">
+    <div>
+      <label for="business-title">Title:</label>
+      <input
+        value="{{business.title}}"
+        class="input"
+        type="text"
+        id="business-title"
+        placeholder="Inset Business Name Here"
+      />
+    </div>
+    <div>
+      <label for="about-business">What does your business do?</label>
+      <input
+        value="{{business.description}}"
+        class="textarea is-large"
+        id="about-business"
+        name="about business"
+        placeholder="What does your business do?"
+      />
+    </div>
+    <div>
+      <label for="business-address">Address:</label>
+      <input
+        value="{{business.address}}"
+        class="input"
+        type="text"
+        id="business-address"
+        placeholder="Insert Business Address Here"
+      />
+    </div>
+    <button type="submit" class="button is-primary is-pulled-right">edit
+      business</button>
+  </form>
+</section>
+
+<script src="/public/javascript/edit-business.js"></script>
