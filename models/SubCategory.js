@@ -21,8 +21,3 @@ SubCategory.init(
     modelName: "subcategory",
   }
 );
-<<<<<<< HEAD
-
-module.exports = SubCategory;
-=======
->>>>>>> origin/develop
