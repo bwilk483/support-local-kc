@@ -7,32 +7,24 @@ class Business extends Model {}
 
 Business.init(
   {
-    businessName: {
-      type: DataTypes.STRING,
+    id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
       primaryKey: true,
       autoIncrement: true,
     },
-    phone: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
-    email: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
-    URL: {
+    address: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [4],
-      },
+      allowNull: true,
     },
   },
   {
@@ -40,7 +32,7 @@ Business.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: "business",
   }
 );
 
