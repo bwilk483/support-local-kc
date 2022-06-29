@@ -161,8 +161,6 @@ footer {
 .rows{
     display:flex;
     flex-direction: column;
-<<<<<<< HEAD
-=======
 }
 
 .row {
@@ -177,5 +175,4 @@ img {
   vertical-align: top;
   justify-content: center;
   zoom: 1
->>>>>>> d6ca28f4fe2f84fbc5c1109cf217bcf46eeba825
 }

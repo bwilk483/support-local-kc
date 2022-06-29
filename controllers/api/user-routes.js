@@ -1,18 +1,6 @@
 const router = require("express").Router();
-<<<<<<< HEAD
-const {
-  Post,
-  User,
-  Review,
-  Comment,
-  Business,
-  Category,
-  SubCategory,
-} = require("../../models");
-=======
 const { User } = require("../../models");
 const withAuth = require("../.././utils/auth");
->>>>>>> d6ca28f4fe2f84fbc5c1109cf217bcf46eeba825
 
 // get all users
 router.get("/", (req, res) => {
@@ -135,27 +123,4 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-router.delete("/:id", (req, res) => {
-  User.destroy({
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((dbUserData) => {
-      if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id" });
-        return;
-      }
-      res.json(dbUserData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> d6ca28f4fe2f84fbc5c1109cf217bcf46eeba825

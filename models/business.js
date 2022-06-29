@@ -32,11 +32,7 @@ Business.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-<<<<<<< HEAD
-    modelName: "user",
-=======
     modelName: "business",
->>>>>>> d6ca28f4fe2f84fbc5c1109cf217bcf46eeba825
   }
 );
 
