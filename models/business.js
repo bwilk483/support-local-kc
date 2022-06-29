@@ -29,7 +29,7 @@ Business.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "subCategory",
+        model: "subcategory",
         key: "id",
       },
     },
