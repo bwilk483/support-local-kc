@@ -9,8 +9,12 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="/public/CSS/style.css" />
-  </head>
+     <link 
+     rel="stylesheet" 
+     href="/public/CSS/style.css" 
+     type="text/css" 
+     media="all"
+     />
 
   <body>
     <div class="wrapper">
@@ -31,6 +35,7 @@
 
           {{else}}
             <a href="/" class="navbar-item is-hoverable pt-1">Homepage</a>
+            <a href="/categories/" class="navbar-item is-hoverable pt-1">View our categories!</a>
             <a href="/login" class="button is-info">login</a>
           {{/if}}
         </nav>
@@ -50,13 +55,14 @@
               <a href="/dashboard/create/">Add a location!</a>
             {{else}}
               <a href="/login/">login</a>
+              
             {{/if}}
           </p>
         </div>
       </footer>
     </div>
     {{#if loggedIn}}
-      <script src="/javascript/logout.js"></script>
+      <script src="/public/javascript/logout.js"></script>
     {{/if}}
   </body>
 </html>
