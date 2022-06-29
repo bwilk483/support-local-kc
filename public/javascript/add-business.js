@@ -1,26 +1,30 @@
 async function newFormHandler(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const title = document.querySelector('input[name="business-title"]').value;
-    const post_about = document.querySelector('input[name="about-business"]').value;
-    const address = document.querySelector('input[name="business-address"]').value;
+  const title = document.getElementById("business-title").value;
+  const post_about = document.getElementById("about-business").value;
 
-    const response = await fetch(`/api/businesses`, {
-        method: 'POST',
-        body: JSON.stringify({
-            title,
-            post_about,
-            address
-        }),
-        headers: {
-            'Business-Type': 'application/json'
-        }
-    });
-    if (response.ok) {
-        document.location.replace('/dashboard');
-    } else {
-        alert(response.statusText);
-    }
+  const address = document.getElementById("business-address").value;
+  alert(title);
+  const response = await fetch(`/api/business`, {
+    method: "POST",
+    body: JSON.stringify({
+      title,
+      post_about,
+      address,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.ok) {
+    console.log("RESPONSE", response);
+    document.location.replace("/dashboard");
+  } else {
+    alert(response.statusText);
+  }
 }
-
-document.querySelector('.new-business-form').addEventListener('submit', newFormHandler);
+console.log("new business load");
+document
+  .querySelector(".new-business-form")
+  .addEventListener("submit", newFormHandler);
