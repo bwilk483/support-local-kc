@@ -43,9 +43,9 @@ router.get("/dashboard/create", async (req, res) => {
   }
 });
 
-router.get("/categories", async (req, res) => {
+router.get("/businesses", async (req, res) => {
   try {
-    res.render("categories");
+    res.render("Businesses");
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -1,17 +1,24 @@
 <div class="mb-5 pt-3">
     <a href="/dashboard/create/"><button id="createBusiness" class="button is-primary is-pulled-right">Create Business</button></a>
 
-    <h2 class="title pb-3">Dashboard: Your Business</h2>
-    {{#if posts.length}}
+    <h2 class="title pb-3">Categories:</h2>
 </div>
+<section>
+    <div class="row">
+        <span>
+        <a href="/entertainment" class="is-hoverable">
+            <img width="150" src="../public/images/category/entertain.jpg" alt="Entertainment-image">
+            <h6 class="has-text-black has-text-weight-bold">Entertainment</h6>
+            </span>
+        </a>
+        <a href="/restaurant" class="is-hoverable">
+            <img width="150" src="../public/images/category/rest.jpg" alt="Restaurant-image">
+            <h6 class="has-text-black has-text-weight-bold">Restaurants</h6>
+        </a>
+        <a href="/retail" class="is-hoverable">
+            <img width="150" src="../public/images/category/retail.jpg" alt="Retail-image">
+            <h6 class="has-text-black has-text-weight-bold">Retail</h6>
+        </a>
+    </div>
 
-{{#each posts as |post|}}
-    <div>{{post.title}}</div>
-        <a href="/dashboard/edit/{{post.id}}"><button class="button mb-5 ml-5 is-info">Edit Business:</button></a>
-        </div>
-    {{/each}}
-
-{{else}}
-<h5 class="pb-4 has-text-centered is-italic">You do not currently have a business</h5>
-
-{{/if}}
+</section>
