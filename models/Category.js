@@ -6,18 +6,19 @@ class Category extends Model {}
 
 Category.init(
   {
-    businessName: {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    title: "Business Type",
-    type: "Resturant Type",
-    allowNull: false,
   },
   {
     sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "category",
   }
 );
 
