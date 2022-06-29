@@ -2,10 +2,6 @@ const { SubCategory } = require('../models');
 
 const subcategoryData = [
     {
-      business_type: 'Sushi',
-      category_name: 'Resturant'
-    },
-    {
       business_type: 'Mexican',
       category_name: 'Resturant'
     },
@@ -15,10 +11,6 @@ const subcategoryData = [
     },
     {
       business_type: 'American',
-      category_name: 'Resturant'
-    },
-    {
-      business_type: 'Chinese',
       category_name: 'Resturant'
     },
     {
@@ -32,10 +24,6 @@ const subcategoryData = [
     {
         business_type: 'Thrift',
         category_name: 'Retail'
-    },
-    {
-        business_type: 'Grocery',
-        category_name: 'Retail'   
     },
     {
         business_type: 'Cinema',
