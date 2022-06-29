@@ -20,17 +20,21 @@ Review.init(
     post_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "post",
-        key: "id",
-      },
+        model: 'post',
+        key: 'id'
+      }
     },
+    review: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "Review",
+    modelName: 'review'
   }
 );
 
