@@ -73,10 +73,6 @@ Category.hasMany(SubCategory, {
   foreignKey: "category_id",
 });
 
-Subcategory.belongsTo(Category, {
-  foreignKey: "category_id",
-});
-
 SubCategory.belongsTo(Category, {
   foreignKey: "category_id",
 });
