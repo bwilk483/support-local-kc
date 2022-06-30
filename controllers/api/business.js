@@ -6,8 +6,11 @@ router.post("/", async (req, res) => {
   try {
     const dbBusinessData = await Business.create({
       title: req.body.title,
-      description: req.body.post_about,
+      description: req.body.description,
       address: req.body.address,
+      site: req.body.site,
+      phone: req.body.phone,
+      subCategory_id: req.body.subCategory_id,
     });
     res.json(dbBusinessData);
   } catch (err) {
