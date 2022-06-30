@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { User } = require("../models");
+const { User, Business } = require("../models");
 
 //Import Middleware
 const withAuth = require("../utils/auth");
@@ -33,9 +33,20 @@ router.get("/signup", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+router.get("/dashboard/edit/:id", async (req, res) => {
+  try {
+    const businesses = await Business.findOne({ id: req.params.id });
+    console.log(businesses.dataValues, req.params.id);
+    res.render("edit-business", { business: businesses.dataValues });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 router.get("/dashboard/create", async (req, res) => {
   try {
+    // const subcatetogries = await SubCategory.findAll({});
+    // console.log("subcat", subcatetogries);
     res.render("addBusiness");
   } catch (err) {
     console.log(err);
@@ -80,7 +91,11 @@ router.get("/entertainment", async (req, res) => {
 
 router.get("/dashboard/", async (req, res) => {
   try {
-    res.render("dashboard", { loggedIn: req.session.loggedIn });
+    const businesses = await Business.findAll({});
+    console.log(businesses);
+    const posts = businesses.map((business) => business.dataValues);
+
+    res.render("dashboard", { posts: posts, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

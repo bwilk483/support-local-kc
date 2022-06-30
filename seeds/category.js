@@ -14,4 +14,8 @@ const categoryData = [
 
 const seedCategory = () => Category.bulkCreate(categoryData);
 
+<<<<<<< HEAD
 module.exports = seedCategory;
+=======
+module.exports = seedCategory;
+>>>>>>> origin/develop

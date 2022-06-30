@@ -4,16 +4,40 @@ const { User, Business } = require("../../models");
 // CREATE new Business
 router.post("/", async (req, res) => {
   try {
-    const dbBusinessData = await Business.create({
+    const data = {
+      id: null,
       title: req.body.title,
       description: req.body.post_about,
       address: req.body.address,
-    });
-    res.json(dbBusinessData);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+      subCategory_id: 1,
+    };
+    const dbBusinessData = await Business.create(data);
+    console.log(data);
+
+    res.status(200).json({ message: "business added" });
+  } catch (ex) {
+    res.status(404).json({ message: "error adding company" });
   }
+  return;
+});
+router.put("/", async (req, res) => {
+  const data = {
+    title: req.body.title,
+    description: req.body.post_about,
+    address: req.body.address,
+    subCategory_id: 1,
+  };
+  const id = req.body.id;
+  console.log("update business: ", id, data);
+  const result = await Business.update(data, { where: { id: id } });
+
+  console.log(data);
+
+  res.status(202).json({ status: 202, message: "business updated" });
+  return;
+});
+router.get("/", (req, res) => {
+  res.send("get business");
 });
 
 // get all Businesses
