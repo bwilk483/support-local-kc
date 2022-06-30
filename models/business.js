@@ -3,6 +3,8 @@ const { model } = require("../config/connection");
 
 const { model } = require("../config/connection");
 
+const { model } = require("../config/connection");
+
 const sequelize = require("../config/connection");
 
 class Business extends Model {}

@@ -19,6 +19,7 @@ const seedAll = async () => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 seedAll();
 =======
 seedAll();
@@ -26,6 +27,12 @@ seedAll();
 =======
 seedAll();
 >>>>>>> d6ca28f4fe2f84fbc5c1109cf217bcf46eeba825
+=======
+seedAll();
+=======
+seedAll();
+>>>>>>> origin/develop
+>>>>>>> 8ce68f9 (edit fixed)
 =======
 seedAll();
 =======

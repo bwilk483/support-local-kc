@@ -2,6 +2,7 @@ async function signupFormHandler(event) {
   event.preventDefault();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   const username = document.querySelector("#username-signup").value.trim();
   const email = document.querySelector("#email-signup").value.trim();
@@ -27,6 +28,8 @@ async function signupFormHandler(event) {
 =======
 =======
 >>>>>>> 8ce68f9 (edit fixed)
+=======
+>>>>>>> 8ce68f9 (edit fixed)
 
   const username = document.querySelector("#username-signup").value.trim();
   const email = document.querySelector("#email-signup").value.trim();
@@ -49,8 +52,11 @@ async function signupFormHandler(event) {
       alert(response.statusText);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> d6ca28f4fe2f84fbc5c1109cf217bcf46eeba825
 =======
+=======
+>>>>>>> 8ce68f9 (edit fixed)
 =======
 
   const username = document.querySelector("#username-signup").value.trim();
@@ -75,6 +81,9 @@ async function signupFormHandler(event) {
   } else {
     alert(response.statusText);
 >>>>>>> 0bb7b63 (test)
+<<<<<<< HEAD
+>>>>>>> 8ce68f9 (edit fixed)
+=======
 >>>>>>> 8ce68f9 (edit fixed)
   }
 }

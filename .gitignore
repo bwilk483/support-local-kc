@@ -11,4 +11,7 @@ package-lock.json
 /node_modules
 /package-lock.json
 .DS_Store
+<<<<<<< HEAD
+>>>>>>> 8ce68f9 (edit fixed)
+=======
 >>>>>>> 8ce68f9 (edit fixed)
