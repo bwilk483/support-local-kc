@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Category } = require("../../models");
 const withAuth = require("../.././utils/auth");
 
 // get all users
@@ -104,6 +104,7 @@ router.post("/logout", withAuth, (req, res) => {
   });
 });
 
+// Delete User by ID
 router.delete("/:id", (req, res) => {
   User.destroy({
     where: {
@@ -121,6 +122,25 @@ router.delete("/:id", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.get("/categories/:id", withAuth, async (req, res) => {
+  try {
+    const categoryData = await Category.findByPk(req.params.id, {
+      include: [
+        {
+          model: Category,
+          attributes: ["id", "category_name"],
+        },
+      ],
+    });
+
+    const category = categoryData.get({ plain: true });
+    res.render("home", { home, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
