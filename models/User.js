@@ -49,6 +49,7 @@ User.init(
     underscored: true,
     modelName: "user",
   }
+  // test2
 );
 
 module.exports = User;
