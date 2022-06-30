@@ -1,7 +1,7 @@
 //import all models
-const Business = require("./Business");
+const Business = require("./business");
 const Category = require("./Category");
-const Review = require("./Review");
+const Review = require("./review");
 const SubCategory = require("./SubCategory");
 const User = require("./User");
 const Post = require("./Post");
@@ -70,11 +70,19 @@ Post.hasMany(Comment, {
 });
 
 Category.hasMany(SubCategory, {
-foreignKey: "category_id"
+  foreignKey: "category_id",
 });
 
 SubCategory.belongsTo(Category, {
-foreignKey: 'category_id'
+  foreignKey: "category_id",
+});
+
+Business.belongsTo(SubCategory, {
+  foreignKey: "subCategory_id",
+});
+
+SubCategory.hasMany(Business, {
+  foreignKey: "subCategory_id",
 });
 
 module.exports = {
