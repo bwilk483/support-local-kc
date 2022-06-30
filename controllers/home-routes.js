@@ -1,13 +1,31 @@
 const router = require("express").Router();
-const sequelize = require("../config/connection");
-const { User } = require("../models");
+//const sequelize = require("../config/connection");
+//const { User, Business } = require("../models");
+const { Category, SubCategory, Business } = require("../models");
+const { getAttributes } = require("../models/business");
 
 //Import Middleware
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    res.render("dashboard");
+    const categoryData = await Category.findAll({
+      include: [
+        {
+          model: SubCategory,
+          attributes: ["id", "subcategory_name", "category_id"],
+        },
+      ],
+    });
+
+    const categories = categoryData.map((category) =>
+      category.get({ plain: true })
+    );
+
+    res.render("home", {
+      categories,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -31,10 +49,57 @@ router.get("/signup", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+router.get("/dashboard/edit/:id", async (req, res) => {
+  try {
+    const businesses = await Business.findOne({ id: req.params.id });
+    console.log(businesses.dataValues, req.params.id);
+    res.render("edit-business", { business: businesses.dataValues });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 router.get("/dashboard/create", async (req, res) => {
   try {
+    // const subcatetogries = await SubCategory.findAll({});
+    // console.log("subcat", subcatetogries);
     res.render("addBusiness");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/categories", async (req, res) => {
+  try {
+    res.render("categories");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/retail", async (req, res) => {
+  try {
+    res.render("retail");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/restaurant", async (req, res) => {
+  try {
+    res.render("restaurant");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/entertainment", async (req, res) => {
+  try {
+    res.render("entertainment");
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -43,7 +108,82 @@ router.get("/dashboard/create", async (req, res) => {
 
 router.get("/dashboard/", async (req, res) => {
   try {
-    res.render("dashboard");
+    const businesses = await Business.findAll({});
+    console.log(businesses);
+    const posts = businesses.map((business) => business.dataValues);
+
+    res.render("dashboard", { posts: posts, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// router.get("/category/:id", async (req, res) => {
+//   try {
+//     console.log(id);
+//     const subcategoryData = await SubCategory.findAll({
+//       where: {
+//         category_id: req.params.category_id,
+//       },
+//     });
+//     console.log(subcategoryData);
+
+//     const subcategories = subcategoryData.map((subcategory) =>
+//       subcategory.get({ plain: true })
+//     );
+
+//     res.render("category", { subcategories, loggedIn: req.session.loggedIn });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+router.get("/category/:id", async (req, res) => {
+  try {
+    const subcategoryData = await SubCategory.findAll();
+    const subcategories = subcategoryData.map((subcategory) =>
+      subcategory.get({ plain: true })
+    );
+
+    res.render("category", {
+      subcategories,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/subcategory/:id", async (req, res) => {
+  try {
+    const dbBusinessData = await Business.findAll();
+    const businesses = dbBusinessData.map((business) =>
+      business.get({ plain: true })
+    );
+
+    res.render("subcategory", {
+      businesses,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/business/:id", async (req, res) => {
+  try {
+    const dbBusinessData = await Business.findByPk(req.params.id);
+
+    const business = dbBusinessData.get({ plain: true });
+
+    res.render("business", {
+      business,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

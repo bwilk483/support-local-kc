@@ -1,30 +1,35 @@
+const titleId = document.getElementById("business-title");
+const postAboutId = document.getElementById("about-business");
+const businessId = document.getElementById("businessId");
+const addressId = document.getElementById("business-address");
 async function editFormHandler(event) {
-    event.preventDefault();
+  event.preventDefault();
+  //alert("save business");
+  const id = businessId.value;
+  const post_about = postAboutId.value;
+  const title = titleId.value;
+  const address = addressId.value;
+  //alert("put");
+  const response = await fetch(`/api/business`, {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      title,
+      post_about,
+      address,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  console.log(response);
+  if (response.ok) {
+    document.location.replace("/dashboard/");
+  } else {
+    alert(response.statusText);
+  }
 }
 
-const title = document.querySelector('input[name="post-title"]').value;
-    const post_about = document.querySelector('input[name="about-business"]').value;
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-      ];
-
-      const response = await fetch(`/api/business/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-            title,
-            post_about
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        document.location.replace('/dashboard/');
-      } else {
-        alert(response.statusText);
-      }
-  
-  
-  document.querySelector('.edit-business-form').addEventListener('submit', editFormHandler);
-      
+document
+  .querySelector(".edit-business-form")
+  .addEventListener("submit", editFormHandler);

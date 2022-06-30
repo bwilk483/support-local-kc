@@ -2,23 +2,18 @@ const { Category } = require("../models");
 
 const categoryData = [
   {
-    name: "Restaurant",
-    description: "Restaurant description",
+    category_name: "Restaurant",
   },
   {
-    name: "Retail",
-    description: "Retail description",
+    category_name: "Retail",
   },
   {
-    name: "entertainment",
-    description: "Entertainment description",
+    category_name: "entertainment",
   },
 ];
 
 const seedCategory = () => Category.bulkCreate(categoryData);
 
-<<<<<<< HEAD
+
 module.exports = seedCategory;
-=======
-module.exports = seedCategory;
->>>>>>> origin/develop
+
