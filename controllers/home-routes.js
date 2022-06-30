@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Category, SubCategory } = require("../models");
+const { Category, SubCategory, Business } = require("../models");
 const { getAttributes } = require("../models/business");
 
 //Import Middleware
@@ -102,18 +102,71 @@ router.get("/dashboard/", async (req, res) => {
   }
 });
 
+// router.get("/category/:id", async (req, res) => {
+//   try {
+//     console.log(id);
+//     const subcategoryData = await SubCategory.findAll({
+//       where: {
+//         category_id: req.params.category_id,
+//       },
+//     });
+//     console.log(subcategoryData);
+
+//     const subcategories = subcategoryData.map((subcategory) =>
+//       subcategory.get({ plain: true })
+//     );
+
+//     res.render("category", { subcategories, loggedIn: req.session.loggedIn });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+router.get("/category/:id", async (req, res) => {
+  try {
+    const subcategoryData = await SubCategory.findAll();
+    const subcategories = subcategoryData.map((subcategory) =>
+      subcategory.get({ plain: true })
+    );
+
+    res.render("category", {
+      subcategories,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.get("/subcategory/:id", async (req, res) => {
   try {
-    console.log(id);
-    const subcategoryData = await SubCategory.findAll({
-      where: {
-        categories_id: req.params.category_id,
-      },
-    });
-    console.log(subcategoryData);
+    const dbBusinessData = await Business.findAll();
+    const businesses = dbBusinessData.map((business) =>
+      business.get({ plain: true })
+    );
 
-    const subcategory = subcategoryData.get({ plain: true });
-    res.render("subcategory", { subcategory, loggedIn: req.session.loggedIn });
+    res.render("subcategory", {
+      businesses,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/business/:id", async (req, res) => {
+  try {
+    const dbBusinessData = await Business.findByPk(req.params.id);
+
+    const business = dbBusinessData.get({ plain: true });
+
+    res.render("business", {
+      business,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
