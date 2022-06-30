@@ -35,4 +35,3 @@ SubCategory.init(
 );
 
 module.exports = SubCategory;
-

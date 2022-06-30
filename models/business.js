@@ -1,9 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
-const { model } = require("../config/connection");
 
 const { model } = require("../config/connection");
 
-const { model } = require("../config/connection");
 
 const sequelize = require("../config/connection");
 
@@ -29,6 +27,14 @@ Business.init(
     address: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    subCategory_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "subcategory",
+        key: "id",
+      },
     },
   },
   {
