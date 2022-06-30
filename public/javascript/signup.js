@@ -18,13 +18,15 @@ async function signupFormHandler(event) {
     });
     if (response.ok) {
       console.log("success");
-      document.location.replace("/dashboard");
+      document.location.replace("/");
     } else {
       alert(response.statusText);
     }
 
+  }
+}
 
-  const username = document.querySelector("#username-signup").value.trim();
+  /*const username = document.querySelector("#username-signup").value.trim();
   const email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
 
@@ -47,8 +49,8 @@ async function signupFormHandler(event) {
     alert(response.statusText);
 
   }
-}
+} */
 
 document
   .querySelector(".signup-form")
-  .addEventListener("submit", signupFormHandler)};
+  .addEventListener("submit", signupFormHandler);

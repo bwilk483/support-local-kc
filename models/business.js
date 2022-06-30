@@ -28,6 +28,18 @@ Business.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    hours: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    site: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     subCategory_id: {
       type: DataTypes.INTEGER,
       allowNull: false,

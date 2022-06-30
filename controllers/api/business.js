@@ -10,6 +10,7 @@ router.post("/", async (req, res) => {
       description: req.body.post_about,
       address: req.body.address,
       subCategory_id: 1,
+      category_id: 1,
     };
     const dbBusinessData = await Business.create(data);
     console.log(data);

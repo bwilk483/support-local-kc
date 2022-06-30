@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Category } = require("../../models");
 const withAuth = require("../.././utils/auth");
 
 // get all users
@@ -104,6 +104,7 @@ router.post("/logout", withAuth, (req, res) => {
   });
 });
 
+// Delete User by ID
 router.delete("/:id", (req, res) => {
   User.destroy({
     where: {
