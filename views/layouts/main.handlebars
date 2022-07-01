@@ -15,28 +15,22 @@
      type="text/css" 
      media="all"
      />
-
   <body>
     <div class="wrapper">
       <header>
         <h1 class="has-text-black has-text-weight-bold">Support Local KC</h1>
         <nav class="navbar mt-2">
           {{#if loggedIn}}
-            <a href="/" class="navbar-item is-hoverable pt-1">Homepage</a>
-            <a
-              href="/dashboard"
-              class="navbar-item is-hoverable pt-1"
-            >Dashboard</a>
             <a
               href="/dashboard/create/"
               class="navbar-item is-hoverable pt-1"
             >Add a location!</a>
-            <p>Welcome {{user.username}} </p>
+            <a href="/" class="navbar-item is-hoverable pt-1">Homepage</a>
             <button id="logout" class="button is-info">logout</button>
+            
 
           {{else}}
             <a href="/" class="navbar-item is-hoverable pt-1">Homepage</a>
-            <a href="/categories/" class="navbar-item is-hoverable pt-1">View our categories!</a>
             <a href="/login" class="button is-info">login</a>
           {{/if}}
         </nav>
