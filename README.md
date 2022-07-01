@@ -12,7 +12,7 @@
   ## Description:
   This application was created to support small businesses in the Kansas City Area. You can Look up and add a business.
   ## Installation
-  Live website depolyed here:
+  Live website depolyed here: https://supportlocackc123.herokuapp.com/business/3
   ## Usage
   Find local Businesses 
   ## License:
